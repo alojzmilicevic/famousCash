@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Header = ({ onToggleDarkMode }) => {
+const Header = ({ darkMode }) => {
   const classes = useStyles();
 
   return <Paper elevation={2}>
     <div className={classes.root}>
       <Typography className={classes.text} variant={'h4'}>Spend Famous People's Money</Typography>
-      <DarkModeSwitch onToggleDarkMode={onToggleDarkMode} />
+      <DarkModeSwitch darkMode={darkMode} />
     </div>
   </Paper>
 }

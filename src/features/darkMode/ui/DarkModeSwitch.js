@@ -7,11 +7,12 @@ const useStyles = makeStyles({
   }
 });
 
-const DarkModeSwitch = ({ onToggleDarkMode }) => {
+const DarkModeSwitch = ({ darkMode }) => {
+  const { darkModeEnabled, onToggleDarkMode } = darkMode;
   const classes = useStyles();
   return <FormControlLabel
     className={classes.root}
-    control={<Switch onChange={onToggleDarkMode} />}
+    control={<Switch checked={darkModeEnabled} onChange={onToggleDarkMode} />}
     label="Dark Mode"
   />;
 }

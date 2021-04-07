@@ -20,13 +20,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LandingPage = ({ onToggleDarkMode }) => {
+const LandingPage = ({ darkMode }) => {
   const classes = useStyles();
   const { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity } = useCelebrityData();
 
   return (
     <div className={classes.root}>
-      <Header onToggleDarkMode={onToggleDarkMode} />
+      <Header darkMode={darkMode} />
       <Grid className={classes.container} container spacing={2}>
         <CelebrityPicker celebrity={celebrity} setCurCelebrity={setCurCelebrity} />
         <NetWorthDisplay remainingAmount={remainingAmount} />
