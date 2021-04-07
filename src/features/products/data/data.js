@@ -27,7 +27,7 @@ import nyapartment from '../../../assets/products/nyapartment.jpg'
 import broadway from '../../../assets/products/broadway.jpg'
 import jet from '../../../assets/products/gulfstream.jpg'
 import avatar from '../../../assets/products/avatar.jpg'
-
+import home from '../../../assets/products/home.jpg'
 
 export const productData = [
   { id: 0, img: milk, label: 'Milk', price: 1 },
@@ -46,7 +46,7 @@ export const productData = [
   { id: 13, img: honda, label: 'Honda Civic', price: 26000 },
   { id: 14, img: penthouse, label: 'One Night at Luxury Penthouse Suite', price: 38000 },
   { id: 15, img: audi, label: '2020 Audi TT', price: 50000 },
-  { id: 16, img: audi, label: '2020 Audi TT', price: 50000 },
+  { id: 16, img: home, label: 'Two Bedroom Home Augusta', price: 75000 },
   { id: 17, img: canalboat, label: 'Canal Boat', price: 100000 },
   { id: 18, img: courtside, label: 'Lakers Court Side Season Tickets', price: 200000 },
   { id: 19, img: nyapartment, label: 'New York City Apartment', price: 1000000 },

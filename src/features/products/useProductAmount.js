@@ -4,7 +4,11 @@ function useProductAmount(price, setCurRemainingAmount) {
 
   const [amount, setAmount] = useState(0);
   const updateAmount = useCallback((newAmount) => {
-    if (newAmount >= 0) {
+    if (isNaN(newAmount)) {
+      newAmount = 0;
+    }
+
+   if (newAmount >= 0) {
       setAmount(newAmount);
       setCurRemainingAmount(-(newAmount * price - amount * price));
     }
