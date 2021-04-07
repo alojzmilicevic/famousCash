@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { Card, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
-import { format } from "../util";
+import { format } from "../../util";
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
+import useProductAmount from "./useProductAmount";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,29 +46,27 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.secondary.dark,
     }
   },
+  text: {
+    margin: theme.spacing(1),
+  }
 }));
 
-const Box = ({ entry, setTotal }) => {
-  const { img, label, price } = entry;
-  const [amount, setAmount] = useState(0);
+const ProductBox = ({ product, setCurRemainingAmount }) => {
+  const { img, label, price } = product;
 
   const classes = useStyles();
 
-  const handleChange = (newAmount) => {
-    if (newAmount >= 0) {
-      setAmount(newAmount);
-      setTotal(-(newAmount * price - amount * price));
-    }
-  }
+  const { updateAmount, amount } = useProductAmount(price, setCurRemainingAmount);
+
 
   return (
     <Card className={classes.root} variant="elevation">
       <img alt={label} className={classes.img} src={img} />
       <Typography variant={"body1"}>{label}</Typography>
-      <Typography variant={"body2"}>{format(price)}</Typography>
+      <Typography className={classes.text} variant={"body2"}>{format(price)}</Typography>
 
       <div className={classes.bottom}>
-        <IconButton className={classes.sellIcon} onClick={() => handleChange(amount - 1)}>
+        <IconButton className={classes.sellIcon} onClick={() => updateAmount(amount - 1)}>
           <RemoveIcon />
         </IconButton>
         <TextField
@@ -77,9 +76,9 @@ const Box = ({ entry, setTotal }) => {
           type="number"
           variant={'outlined'}
           value={amount}
-          onChange={(e) => handleChange(parseInt(e.target.value, 10))}
+          onChange={(e) => updateAmount(parseInt(e.target.value, 10))}
         />
-        <IconButton className={classes.buyIcon} onClick={() => handleChange(amount + 1)}>
+        <IconButton className={classes.buyIcon} onClick={() => updateAmount(amount + 1)}>
           <AddIcon />
         </IconButton>
       </div>
@@ -87,4 +86,4 @@ const Box = ({ entry, setTotal }) => {
   )
 };
 
-export default Box;
+export default ProductBox;
