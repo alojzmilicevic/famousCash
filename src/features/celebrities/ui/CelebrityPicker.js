@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
   grid: {
     marginTop: theme.spacing(2),
   },
+  icon: {
+    color: '#fdfb9c'
+  }
 }));
 
 const CelebrityPicker = ({ celebrity, setCurCelebrity }) => {
@@ -43,7 +46,7 @@ const CelebrityPicker = ({ celebrity, setCurCelebrity }) => {
             <Grid key={celeb.name} item xs={10} sm={2}>
               <Button
                 className={classes.button}
-                startIcon={<StarIcon color={'primary'} />}
+                startIcon={<StarIcon className={classes.icon} />}
                 variant={"contained"}
                 color={"secondary"}
                 onClick={() => setCurCelebrity(celeb.id)}
