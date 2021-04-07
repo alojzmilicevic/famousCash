@@ -1,11 +1,11 @@
-import fitness from './fitness.jpeg';
-import laptop from './laptop.jpeg';
-import milk from './milk.jpeg';
-import nike from './nike.jpg';
-import ps4 from './ps4.jpg';
-import rent from './rent.jpeg';
-import wine from './wine.jpg';
-import rice from './rice.jpg';
+import fitness from './items/fitness.jpg';
+import laptop from './items/laptop.jpg';
+import milk from './items/milk.jpg';
+import nike from './items/nike.jpg';
+import ps4 from './items/ps4.jpg';
+import rent from './items/rent.jpg';
+import wine from './items/wine.jpg';
+import rice from './items/rice.jpg';
 
 export const ImageTypes = {
   FITNESS: 'FITNESS',
