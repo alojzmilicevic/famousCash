@@ -9,8 +9,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.extra.base,
     padding: theme.spacing(2),
+    color: theme.palette.primary.fontColor,
   },
   img: {
     maxWidth: '100%',
@@ -25,25 +26,23 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   input: {
-    padding: theme.spacing(1),
     width: 120,
-    textAlign: "center"
-  },
-  inputRoot: {
+    height: theme.spacing(6),
+    color: theme.palette.primary.fontColor,
     marginRight: theme.spacing(1),
     marginLeft: theme.spacing(1),
+    backgroundColor: theme.palette.extra.main,
   },
   buyIcon: {
-    backgroundColor: '#defabb',
+    backgroundColor: theme.palette.success.light,
     '&:hover': {
-      backgroundColor: '#f2fde4',
+      backgroundColor: theme.palette.success.dark,
     }
   },
   sellIcon: {
-    backgroundColor: '#FFCDD2',
-
+    backgroundColor: theme.palette.secondary.main,
     '&:hover': {
-      backgroundColor: '#FFEBEE',
+      backgroundColor: theme.palette.secondary.dark,
     }
   },
 }));
@@ -72,9 +71,8 @@ const Box = ({ entry, setTotal }) => {
           <RemoveIcon />
         </IconButton>
         <TextField
-          className={classes.inputRoot}
-          classes={{
-            root: classes.input
+          InputProps={{
+            className: classes.input
           }}
           type="number"
           variant={'outlined'}

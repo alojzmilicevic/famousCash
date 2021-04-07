@@ -11,6 +11,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    backgroundColor: theme.palette.extra.base,
+    color: theme.palette.primary.fontColor,
   },
   text: {
     paddingTop: theme.spacing(2),
@@ -34,12 +36,12 @@ const Top = ({ data, current, setCurCeleb }) => {
       <Typography className={classes.text} variant={'h4'}>Spend {curCeleb.name} Money</Typography>
       <Grid className={classes.grid} container spacing={2} justify={'center'}>
         {data.map(celeb => (
-          <Grid item xs={12} md={2}>
+          <Grid key={celeb.name} item xs={12} md={2}>
             <Button
               className={classes.button}
-              startIcon={<StarIcon />}
+              startIcon={<StarIcon color={'primary'}/>}
               variant={"contained"}
-              color={"primary"}
+              color={"secondary"}
               onClick={() => setCurCeleb(celeb.id)}
             >
               {celeb.name}
