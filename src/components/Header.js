@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.fontColor,
+    alignItems: 'center',
   },
   text: {
     gridColumnStart: '2',
@@ -22,7 +23,7 @@ const Header = ({ darkMode }) => {
 
   return <Paper elevation={2}>
     <div className={classes.root}>
-      <Typography className={classes.text} variant={'h4'}>Spend Famous People's Money</Typography>
+      <Typography className={classes.text} variant={'h5'}>Spend Famous People's Money</Typography>
       <DarkModeSwitch darkMode={darkMode} />
     </div>
   </Paper>
