@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 
 function useProductAmount(price, setCurRemainingAmount) {
-
   const [amount, setAmount] = useState(0);
   const updateAmount = useCallback((newAmount) => {
     if (isNaN(newAmount)) {

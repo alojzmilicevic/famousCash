@@ -10,9 +10,11 @@ export default function useCelebrityData() {
   }, [remainingAmount]);
 
   const setCurCelebrity = useCallback((id) => {
-    const totalSpent = celebrityData[celebrity].netWorth - remainingAmount;
-    setRemainingAmount(celebrityData[id].netWorth - totalSpent);
-    setCelebrity(id);
+    if (id !== celebrity) {
+      const totalSpent = celebrityData[celebrity].netWorth - remainingAmount;
+      setRemainingAmount(celebrityData[id].netWorth - totalSpent);
+      setCelebrity(id);
+    }
   }, [celebrity, remainingAmount])
 
   return { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity };

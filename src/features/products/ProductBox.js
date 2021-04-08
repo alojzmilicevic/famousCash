@@ -58,7 +58,6 @@ const ProductBox = ({ product, setCurRemainingAmount }) => {
 
   const { updateAmount, amount } = useProductAmount(price, setCurRemainingAmount);
 
-
   return (
     <Card className={classes.root} variant="elevation">
       <img alt={label} className={classes.img} src={img} />
