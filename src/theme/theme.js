@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { grey, yellow, lightBlue, red } from "@material-ui/core/colors";
+import { grey, yellow, lightBlue, brown } from "@material-ui/core/colors";
 
 const darkTheme = {
   primary: {
@@ -21,18 +21,18 @@ const darkTheme = {
 
 const normalTheme = {
   primary: {
-    main: yellow[100],
-    light: '#fffff7',
-    dark: '#cbc693',
+    main: brown[100],
+    light: '#fffefa',
+    dark: '#a59a96',
     fontColor: '#000000',
   },
   secondary: {
-    main: red[100],
-    light: '#ffffff',
-    dark: '#cb9ca1'
+    main: yellow[200],
+    light: '#ffffcf',
+    dark: '#cbc26d'
   },
   extra: {
-    main: '#f5f5f6',
+    main: '#e1e2e1',
     base: '#ffffff',
   }
 };

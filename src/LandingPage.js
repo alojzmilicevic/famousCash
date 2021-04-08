@@ -3,7 +3,7 @@ import { Grid, makeStyles } from "@material-ui/core";
 import Header from "./components/Header";
 import CelebrityPicker from "./features/celebrities/ui/CelebrityPicker";
 import useCelebrityData from "./features/celebrities/useCelebrityData";
-import NetWorthDisplay from "./components/NetWorthDisplay";
+import NetWorthDisplay from "./features/celebrities/ui/NetWorthDisplay";
 import Products from "./features/products/ui/Products";
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +29,7 @@ const LandingPage = ({ darkMode }) => {
     <div className={classes.root}>
       <Header darkMode={darkMode} />
       <Grid className={classes.container} container spacing={2}>
-        <CelebrityPicker celebrity={celebrity} setCurCelebrity={setCurCelebrity} />
+        <CelebrityPicker darkModeEnabled={darkMode.darkModeEnabled} celebrity={celebrity} setCurCelebrity={setCurCelebrity} />
         <NetWorthDisplay remainingAmount={remainingAmount} />
         <Products setCurRemainingAmount={setCurRemainingAmount}/>
       </Grid>

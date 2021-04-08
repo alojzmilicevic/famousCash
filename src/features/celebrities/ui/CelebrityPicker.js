@@ -23,6 +23,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '.6em',
     width: '100%',
     height: theme.spacing(5),
+    backgroundColor: props => props.darkModeEnabled ? theme.palette.secondary.main : "primary",
+    color: "black",
   },
   grid: {
     marginTop: theme.spacing(2),
@@ -32,8 +34,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CelebrityPicker = ({ celebrity, setCurCelebrity }) => {
-  const classes = useStyles();
+const CelebrityPicker = ({ celebrity, setCurCelebrity, darkModeEnabled }) => {
+  const classes = useStyles({ darkModeEnabled });
 
   const curCeleb = celebrityData[celebrity];
   return (
@@ -48,8 +50,8 @@ const CelebrityPicker = ({ celebrity, setCurCelebrity }) => {
                 className={classes.button}
                 startIcon={<StarIcon className={classes.icon} />}
                 variant={"contained"}
-                color={"secondary"}
                 onClick={() => setCurCelebrity(celeb.id)}
+                color={"primary"}
               >
                 {celeb.name}
               </Button>

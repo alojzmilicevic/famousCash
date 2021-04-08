@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
-import { format } from "../util";
+import { format } from "../../../util";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
     display: "flex",
     justifyContent: "center",
     padding: theme.spacing(4),

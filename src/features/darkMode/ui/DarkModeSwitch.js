@@ -1,5 +1,7 @@
-import { FormControlLabel, makeStyles, Switch } from "@material-ui/core";
 import React from "react";
+import { IconButton, makeStyles, Tooltip } from "@material-ui/core";
+import DarkModeOn from '@material-ui/icons/Brightness4';
+import DarkModeOff from '@material-ui/icons/Brightness7';
 
 const useStyles = makeStyles({
   root: {
@@ -10,11 +12,13 @@ const useStyles = makeStyles({
 const DarkModeSwitch = ({ darkMode }) => {
   const { darkModeEnabled, onToggleDarkMode } = darkMode;
   const classes = useStyles();
-  return <FormControlLabel
-    className={classes.root}
-    control={<Switch checked={darkModeEnabled} onChange={onToggleDarkMode} />}
-    label="Dark Mode"
-  />;
+  return (
+    <Tooltip title={'Toggle light/dark theme'}>
+      <IconButton onClick={onToggleDarkMode} className={classes.root}>
+        {darkModeEnabled ? <DarkModeOff color={"secondary"} /> : <DarkModeOn color={"secondary"} />}
+      </IconButton>
+    </Tooltip>
+  )
 }
 
 export default DarkModeSwitch;
