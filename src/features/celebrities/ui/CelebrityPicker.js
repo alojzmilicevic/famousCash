@@ -3,6 +3,7 @@ import ImageAvatar from "../../../components/ImageAvatar";
 import { Button, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import StarIcon from '@material-ui/icons/Star';
 import { celebrityData } from "../data/data";
+import Search from "./Search";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +25,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: theme.spacing(5),
     backgroundColor: props => props.darkModeEnabled ? theme.palette.secondary.main : "primary",
+    "&:hover": {
+      backgroundColor: props => props.darkModeEnabled ? theme.palette.secondary.dark : "primary",
+    },
     color: "black",
   },
   grid: {
@@ -58,6 +62,7 @@ const CelebrityPicker = ({ celebrity, setCurCelebrity, darkModeEnabled }) => {
             </Grid>
           ))}
         </Grid>
+        <Search />
       </Paper>
     </Grid>
   )

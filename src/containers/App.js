@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import LandingPage from "../LandingPage";
 import { MuiThemeProvider, responsiveFontSizes } from "@material-ui/core";
 import { createTheme } from "../theme/theme";
