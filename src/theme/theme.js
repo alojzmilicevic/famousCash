@@ -14,8 +14,9 @@ const darkTheme = {
     dark: '#82b3c9'
   },
   extra: {
-    main: '#292929',
+    main: '#424242',
     base: grey[900],
+    light: '#424242',
   }
 };
 
@@ -34,6 +35,7 @@ const normalTheme = {
   extra: {
     main: '#e1e2e1',
     base: '#ffffff',
+    light: '#ffffff',
   }
 };
 

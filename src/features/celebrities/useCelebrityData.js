@@ -17,5 +17,9 @@ export default function useCelebrityData() {
     }
   }, [celebrity, remainingAmount])
 
-  return { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity };
+  const resetRemainingAmount = useCallback(() => {
+    setRemainingAmount(celebrityData[celebrity].netWorth)
+  }, [celebrity]);
+
+  return { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity, resetRemainingAmount };
 }

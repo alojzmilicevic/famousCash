@@ -1,9 +1,8 @@
-import React  from 'react';
+import React from 'react';
 import { Card, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
 import { format } from "../../util";
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import useProductAmount from "./useProductAmount";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,12 +50,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProductBox = ({ product, setCurRemainingAmount }) => {
+const ProductBox = ({ itemCount, product, updateShoppingCart }) => {
   const { img, label, price } = product;
 
   const classes = useStyles();
-
-  const { updateAmount, amount } = useProductAmount(price, setCurRemainingAmount);
 
   return (
     <Card className={classes.root} variant="elevation">
@@ -65,7 +62,7 @@ const ProductBox = ({ product, setCurRemainingAmount }) => {
       <Typography className={classes.text} variant={"body2"}>{format(price)}</Typography>
 
       <div className={classes.bottom}>
-        <IconButton className={classes.sellIcon} onClick={() => updateAmount(amount - 1)}>
+        <IconButton className={classes.sellIcon} onClick={() => updateShoppingCart(itemCount - 1)}>
           <RemoveIcon />
         </IconButton>
         <TextField
@@ -74,10 +71,10 @@ const ProductBox = ({ product, setCurRemainingAmount }) => {
           }}
           type="number"
           variant={'outlined'}
-          value={amount}
-          onChange={(e) => updateAmount(parseInt(e.target.value, 10))}
+          value={itemCount}
+          onChange={(e) => updateShoppingCart(e.target.valueAsNumber)}
         />
-        <IconButton className={classes.buyIcon} onClick={() => updateAmount(amount + 1)}>
+        <IconButton className={classes.buyIcon} onClick={() => updateShoppingCart(itemCount + 1)}>
           <AddIcon />
         </IconButton>
       </div>

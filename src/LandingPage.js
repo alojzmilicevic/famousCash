@@ -5,6 +5,7 @@ import CelebrityPicker from "./features/celebrities/ui/CelebrityPicker";
 import useCelebrityData from "./features/celebrities/useCelebrityData";
 import NetWorthDisplay from "./features/celebrities/ui/NetWorthDisplay";
 import Products from "./features/products/ui/Products";
+import useProductAmount from "./features/products/useProductAmount";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,15 +24,40 @@ const useStyles = makeStyles(theme => ({
 
 const LandingPage = ({ darkMode }) => {
   const classes = useStyles();
-  const { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity } = useCelebrityData();
+  const {
+    remainingAmount,
+    resetRemainingAmount,
+    setCurRemainingAmount,
+    celebrity,
+    setCurCelebrity
+  } = useCelebrityData();
+
+  const {
+    updateShoppingCart,
+    shoppingCart,
+    resetShoppingCart,
+  } = useProductAmount(setCurRemainingAmount, resetRemainingAmount);
 
   return (
     <div className={classes.root}>
       <Header darkMode={darkMode} />
       <Grid className={classes.container} container spacing={2}>
-        <CelebrityPicker darkModeEnabled={darkMode.darkModeEnabled} celebrity={celebrity} setCurCelebrity={setCurCelebrity} />
-        <NetWorthDisplay remainingAmount={remainingAmount} />
-        <Products setCurRemainingAmount={setCurRemainingAmount}/>
+        <CelebrityPicker
+          darkModeEnabled={darkMode.darkModeEnabled}
+          celebrity={celebrity}
+          setCurCelebrity={setCurCelebrity}
+        />
+        <NetWorthDisplay
+          resetShoppingCart={resetShoppingCart}
+          remainingAmount={remainingAmount}
+          shoppingCart={shoppingCart}
+          celebrity={celebrity}
+          updateShoppingCart={updateShoppingCart}
+        />
+        <Products
+          updateShoppingCart={updateShoppingCart}
+          shoppingCart={shoppingCart}
+        />
       </Grid>
     </div>
   )
