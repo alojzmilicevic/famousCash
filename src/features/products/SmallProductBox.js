@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
-import { format } from "../../util";
+import { formatByCurrency } from "../../util";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -72,7 +72,7 @@ const SmallProductBox = ({ itemCount, product, updateShoppingCart }) => {
         <div className={classes.info}>
           <div className={classes.content}>
             <Typography className={classes.text} variant={"subtitle1"}>{label}</Typography>
-            <Typography variant={"caption"}>{format(price)}</Typography>
+            <Typography variant={"caption"}>{formatByCurrency(price)}</Typography>
           </div>
           <div>
             <IconButton className={classes.sellIcon} onClick={() => updateShoppingCart(itemCount - 1)}>

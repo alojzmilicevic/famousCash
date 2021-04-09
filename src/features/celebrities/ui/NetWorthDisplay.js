@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Badge, Grid, IconButton, makeStyles, Paper, Typography } from "@material-ui/core";
-import { format } from "../../../util";
+import { formatByCurrency } from "../../../util";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingListDialog from "../../../components/ShoppingListDialog";
 import { celebrityData } from "../data/data";
@@ -33,14 +33,14 @@ const NetWorthDisplay = ({ remainingAmount, resetShoppingCart, shoppingCart, cel
   const classes = useStyles();
 
   const totalItemsInBasket = shoppingCart.reduce((a, b) => a + b, 0);
-  const price = format(celebrityData[celebrity].netWorth - remainingAmount);
+  const price = formatByCurrency(celebrityData[celebrity].netWorth - remainingAmount);
 
   const [open, setOpen] = useState(false);
 
   return <Grid item xs={12} className={classes.grid} style={{ paddingTop: 0 }}>
     <Paper elevation={4}>
       <div className={classes.root}>
-        <Typography className={classes.text} variant={'h5'}>{format(remainingAmount)}</Typography>
+        <Typography className={classes.text} variant={'h5'}>{formatByCurrency(remainingAmount)}</Typography>
         <IconButton className={classes.button} onClick={() => setOpen(!open)}>
           <Badge max={999} badgeContent={totalItemsInBasket} color="primary">
             <ShoppingCartIcon />

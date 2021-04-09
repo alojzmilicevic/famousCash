@@ -3,6 +3,6 @@ const formatter = new Intl.NumberFormat('en-us', {
   currency: 'USD',
 })
 
-export function format(amount) {
+export function formatByCurrency(amount) {
   return formatter.format(amount);
 }

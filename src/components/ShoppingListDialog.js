@@ -9,6 +9,7 @@ import { productData } from "../features/products/data/data";
 import SmallProductBox from "../features/products/SmallProductBox";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { FacebookIcon, FacebookShareButton } from "react-share";
+import { serialize } from "../features/products/serializeShoppingBasket";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,7 +94,7 @@ const ShoppingListDialog = ({
             Delete
           </Button>
         </Tooltip>
-        <FacebookShareButton url={'https://main.d2dns4oupfe5if.amplifyapp.com/'} quote={'Spend Famous Peoples Money'}>
+        <FacebookShareButton url={'https://main.d2dns4oupfe5if.amplifyapp.com/'} quote={serialize(shoppingCart)}>
           <FacebookIcon size={32} />
         </FacebookShareButton>
       </DialogActions>

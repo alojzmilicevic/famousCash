@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
-import { format } from "../../util";
+import { formatByCurrency } from "../../util";
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -59,7 +59,7 @@ const ProductBox = ({ itemCount, product, updateShoppingCart }) => {
     <Card className={classes.root} variant="elevation">
       <img alt={label} className={classes.img} src={img} />
       <Typography variant={"body1"}>{label}</Typography>
-      <Typography className={classes.text} variant={"body2"}>{format(price)}</Typography>
+      <Typography className={classes.text} variant={"body2"}>{formatByCurrency(price)}</Typography>
 
       <div className={classes.bottom}>
         <IconButton className={classes.sellIcon} onClick={() => updateShoppingCart(itemCount - 1)}>
