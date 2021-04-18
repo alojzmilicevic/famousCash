@@ -94,7 +94,11 @@ const ShoppingListDialog = ({
             Delete
           </Button>
         </Tooltip>
-        <FacebookShareButton url={'https://main.d2dns4oupfe5if.amplifyapp.com/'} quote={serialize(shoppingCart)}>
+        <FacebookShareButton
+          style={{ outline: 'none' }}
+          url={'https://main.d2dns4oupfe5if.amplifyapp.com/'}
+          quote={serialize(shoppingCart)}
+        >
           <FacebookIcon size={32} />
         </FacebookShareButton>
       </DialogActions>
