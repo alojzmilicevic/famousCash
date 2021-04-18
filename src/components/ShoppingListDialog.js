@@ -13,7 +13,6 @@ import { serialize } from "../features/products/serializeShoppingBasket";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: 500,
     backgroundColor: theme.palette.extra.light,
     color: theme.palette.primary.fontColor,
   },
@@ -63,6 +62,7 @@ const ShoppingListDialog = ({
       onBackdropClick={closeDialog}
       classes={{ paper: classes.root }}
       keepMounted
+      maxWidth={'md'}
     >
       <DialogContent>
         <div className={classes.main}>
