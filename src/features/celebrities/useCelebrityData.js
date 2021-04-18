@@ -2,23 +2,23 @@ import { useCallback, useState } from "react";
 import { celebrityData } from "./data/data";
 
 export default function useCelebrityData() {
-  const [celebrity, setCelebrity] = useState(0);
-  const [remainingAmount, setRemainingAmount] = useState(celebrityData[celebrity].netWorth);
+  const [celebrity, setCelebrity] = useState(celebrityData[0]);
+  const [remainingAmount, setRemainingAmount] = useState(celebrity.net_worth);
 
   const setCurRemainingAmount = useCallback((amount) => {
     setRemainingAmount(remainingAmount + amount);
   }, [remainingAmount]);
 
-  const setCurCelebrity = useCallback((id) => {
-    if (id !== celebrity) {
-      const totalSpent = celebrityData[celebrity].netWorth - remainingAmount;
-      setRemainingAmount(celebrityData[id].netWorth - totalSpent);
-      setCelebrity(id);
+  const setCurCelebrity = useCallback((celeb) => {
+    if (celeb !== celebrity) {
+      const totalSpent = celebrity.net_worth - remainingAmount;
+      setRemainingAmount(celeb.net_worth - totalSpent);
+      setCelebrity(celeb);
     }
   }, [celebrity, remainingAmount])
 
   const resetRemainingAmount = useCallback(() => {
-    setRemainingAmount(celebrityData[celebrity].netWorth)
+    setRemainingAmount(celebrity.net_worth)
   }, [celebrity]);
 
   return { remainingAmount, setCurRemainingAmount, celebrity, setCurCelebrity, resetRemainingAmount };

@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles, Tooltip, Typography } from "@material-ui/core";
 import { productData } from "../features/products/data/data";
-import SmallProductBox from "../features/products/SmallProductBox";
+import SmallProductBox from "../features/products/ui/SmallProductBox";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { FacebookIcon, FacebookShareButton } from "react-share";
 import { serialize } from "../features/products/serializeShoppingBasket";

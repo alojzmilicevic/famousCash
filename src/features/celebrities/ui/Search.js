@@ -1,64 +1,82 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useState } from 'react';
+import {
+  CircularProgress,
+  Dialog,
+  DialogTitle, Divider,
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  ListItemText,
+  makeStyles, Typography
+} from "@material-ui/core";
+import SearchIcon from '@material-ui/icons/Search';
+import { Form } from 'react-final-form';
+import { TextField } from "mui-rff";
 import { getCelebrity } from "../../../api/celebrities";
 
-export default function Search() {
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const loading = open && options.length === 0;
+const useStyles = makeStyles(theme => ({
+  root: {
+    minWidth: 360,
+    marginTop: theme.spacing(1),
+  }
+}));
 
-  const handleChange = async (name) => {
-    const response = await getCelebrity(name);
+const Search = ({ setCurCelebrity }) => {
+  const classes = useStyles();
 
-    setOptions(response);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [celebrities, setCelebrities] = useState([]);
+  const onSubmit = async (formValues) => {
+    if (formValues) {
+      const data = await getCelebrity(formValues.name);
+      setCelebrities(data);
+    }
+    setModalOpen(true);
   };
 
-  React.useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
-  }, [open]);
-
-  console.log(options);
   return (
-    <Autocomplete
-      id="asynchronous-demo"
-      style={{ width: 300 }}
-      open={open}
-      onOpen={() => {
-        setOpen(true);
-      }}
-      onClose={() => {
-        setOpen(false);
-      }}
-      getOptionSelected={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option.name}
-      options={options}
-      loading={loading}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Asynchronous"
-          variant="outlined"
-          onChange={e => {
-            const val = e.target.value;
-            if (val) {
-              handleChange(val);
-            }
-          }}
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
-          }}
-        />
-      )}
-    />
-  );
+    <>
+      <Form
+        onSubmit={onSubmit}
+        render={({ handleSubmit, form, submitting, pristine, values }) => (
+          <form onSubmit={handleSubmit} noValidate>
+            <TextField
+              className={classes.root}
+              label="Search for other celebrities..."
+              name="name"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">
+                  <IconButton onClick={handleSubmit}>
+                    {submitting ? <CircularProgress size={24} /> : <SearchIcon />}
+                  </IconButton>
+                </InputAdornment>,
+              }}
+            />
+          </form>
+        )}
+      />
+      <Dialog maxWidth={'sm'} fullWidth onClose={() => setModalOpen(false)} aria-labelledby="simple-dialog-title"
+              open={modalOpen}>
+        <DialogTitle>Results</DialogTitle>
+        <List>
+          {celebrities.map((celeb) => (
+            <>
+              <ListItem onClick={() => {
+                setModalOpen(false);
+                return setCurCelebrity(celeb);
+              }} button>
+                <ListItemText primary={celeb.name} />
+              </ListItem>
+              <Divider />
+            </>
+          ))}
+        </List>
+      </Dialog>
+    </>
+
+  )
+
 }
+
+export default Search;

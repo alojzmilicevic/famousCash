@@ -9,5 +9,10 @@ export function getCelebrity(name) {
       headers: headers(),
       contentType: 'application/json',
     }).then(res => res.data)
+      .catch(e => {
+        console.log(e.name)
+        console.log(e.responseText)
+        return e.message;
+      })
   );
 }

@@ -33,7 +33,7 @@ const NetWorthDisplay = ({ remainingAmount, resetShoppingCart, shoppingCart, cel
   const classes = useStyles();
 
   const totalItemsInBasket = shoppingCart.reduce((a, b) => a + b, 0);
-  const price = formatByCurrency(celebrityData[celebrity].netWorth - remainingAmount);
+  const price = formatByCurrency(celebrity.net_worth - remainingAmount);
 
   const [open, setOpen] = useState(false);
 

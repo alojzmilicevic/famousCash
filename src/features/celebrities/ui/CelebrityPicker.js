@@ -1,7 +1,5 @@
 import React from 'react';
-import ImageAvatar from "../../../components/ImageAvatar";
 import { Button, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
-import StarIcon from '@material-ui/icons/Star';
 import { celebrityData } from "../data/data";
 import Search from "./Search";
 
@@ -41,20 +39,18 @@ const useStyles = makeStyles(theme => ({
 const CelebrityPicker = ({ celebrity, setCurCelebrity, darkModeEnabled }) => {
   const classes = useStyles({ darkModeEnabled });
 
-  const curCeleb = celebrityData[celebrity];
   return (
     <Grid item xs={12}>
       <Paper className={classes.root}>
-        <ImageAvatar alt={curCeleb.name} img={curCeleb.img} />
-        <Typography className={classes.text} variant={'h4'}>Spend {curCeleb.name} Money</Typography>
+        <Typography className={classes.text} variant={'h4'}>Spend {celebrity.name} Money</Typography>
+        <Search setCurCelebrity={setCurCelebrity}/>
         <Grid className={classes.grid} container spacing={2} justify={'center'}>
           {celebrityData.map(celeb => (
             <Grid key={celeb.name} item xs={10} sm={2}>
               <Button
                 className={classes.button}
-                startIcon={<StarIcon className={classes.icon} />}
-                variant={"contained"}
-                onClick={() => setCurCelebrity(celeb.id)}
+                variant={"text"}
+                onClick={() => setCurCelebrity(celeb)}
                 color={"primary"}
               >
                 {celeb.name}
@@ -62,7 +58,6 @@ const CelebrityPicker = ({ celebrity, setCurCelebrity, darkModeEnabled }) => {
             </Grid>
           ))}
         </Grid>
-        <Search />
       </Paper>
     </Grid>
   )

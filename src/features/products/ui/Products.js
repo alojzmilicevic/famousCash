@@ -1,7 +1,7 @@
 import React from "react";
 import { productData } from "../data/data";
 import { Grid } from "@material-ui/core";
-import ProductBox from "../ProductBox";
+import ProductBox from "./ProductBox";
 
 const Products = ({ updateShoppingCart, shoppingCart }) => (
   productData.map((product) => (
