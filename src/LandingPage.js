@@ -6,6 +6,7 @@ import useCelebrityData from "./features/celebrities/useCelebrityData";
 import NetWorthDisplay from "./features/celebrities/ui/NetWorthDisplay";
 import Products from "./features/products/ui/Products";
 import useProductAmount from "./features/products/useProductAmount";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,6 +60,7 @@ const LandingPage = ({ darkMode }) => {
           shoppingCart={shoppingCart}
         />
       </Grid>
+      <Footer />
     </div>
   )
 }
