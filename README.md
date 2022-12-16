@@ -1,4 +1,4 @@
-# Spend famous peoples money
+# Spend famous peoples money 🤑
 
 "Welcome to my 'What Could You Buy with [Rich Person's Name]' project! This is a fun meme project written in React that allows you to enter a rich person's net worth and see how much of various items you could purchase with that amount of money.
 
